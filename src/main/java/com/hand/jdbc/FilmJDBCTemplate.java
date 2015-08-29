@@ -3,12 +3,12 @@ package com.hand.jdbc;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Controller;
 
 import com.hand.dao.FilmDao;
 import com.hand.javabean.Film;
-
+@Controller
 public class FilmJDBCTemplate implements FilmDao{
 	
 	private DataSource dataSource;
