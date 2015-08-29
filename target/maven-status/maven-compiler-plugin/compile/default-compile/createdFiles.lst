@@ -1,0 +1,8 @@
+com\hand\log\AfterInsertEvent.class
+com\hand\handler\CStopEventHandler.class
+com\hand\javabean\Film.class
+com\hand\jdbc\FilmJDBCTemplate.class
+com\hand\main\Main.class
+com\hand\log\BeforeInsertEvent.class
+com\hand\handler\CStartEventHandler.class
+com\hand\dao\FilmDao.class
