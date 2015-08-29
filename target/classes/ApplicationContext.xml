@@ -1,0 +1,42 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="
+   http://www.springframework.org/schema/beans     
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+   http://www.springframework.org/schema/context 
+   http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+   
+   <context:annotation-config/>
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/sakila" />
+		<property name="username" value="mc" />
+		<property name="password" value="123456" />
+	</bean>
+	
+	<!-- Definition for FilmJDBCTemplate bean -->
+   <bean id="jt_film" 
+      class="com.hand.jdbc.FilmJDBCTemplate">
+      <property name="dataSource"  ref="dataSource" />    
+   </bean>
+   <!-- Definition for Film bean -->
+   <bean id="film" class="com.hand.javabean.Film" />
+   
+   <!-- Definition for EventListener bean -->
+   <bean id="cStartEventHandler" 
+		class="com.hand.handler.CStartEventHandler"/>
+	<bean id="cStopEventHandler" 
+		class="com.hand.handler.CStopEventHandler"/>
+	
+	<!-- Definition for Event bean -->
+	<bean id="beforeInsertFilmEventHandler" 
+      class="com.hand.handler.BeforeInsertFilmEventHandler"/>
+   <bean id="beforeInsertPublisher" 
+      class="com.hand.publisher.BeforeInsertPublisher"/>
+      <bean id="afterInsertFilmEventHandler" 
+      class="com.hand.handler.AfterInsertFilmEventHandler"/>
+   <bean id="afterInsertPublisher" 
+      class="com.hand.publisher.AfterInsertPublisher"/>
+</beans>
